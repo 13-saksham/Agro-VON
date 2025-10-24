@@ -1,0 +1,178 @@
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Link } from "react-router-dom";
+import { 
+  Sprout, 
+  Bot, 
+  Cloud, 
+  Bug, 
+  ShoppingCart, 
+  Gauge,
+  TrendingUp,
+  Shield,
+  ArrowRight
+} from "lucide-react";
+
+const Index = () => {
+  const features = [
+    {
+      icon: Gauge,
+      title: "Smart Soil Analysis",
+      description: "Real-time soil readings with Agro-Bozo hardware integration",
+      link: "/dashboard"
+    },
+    {
+      icon: Bot,
+      title: "AI Assistant",
+      description: "Get instant farming advice via text or voice",
+      link: "/agro-bot"
+    },
+    {
+      icon: Cloud,
+      title: "Weather Forecast",
+      description: "7-day forecast for irrigation planning",
+      link: "/weather"
+    },
+    {
+      icon: Sprout,
+      title: "Crop Selection",
+      description: "AI recommendations with MSP prices",
+      link: "/crops"
+    },
+    {
+      icon: Bug,
+      title: "Disease Detection",
+      description: "AI-powered crop disease identification",
+      link: "/disease"
+    },
+    {
+      icon: ShoppingCart,
+      title: "Direct Market",
+      description: "Connect with buyers, eliminate middlemen",
+      link: "/market"
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-background via-muted/20 to-background">
+      {/* Hero Section */}
+      <section className="relative px-4 pt-20 pb-16 md:pt-32 md:pb-24">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center space-y-6 mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full">
+              <Sprout className="w-5 h-5 text-primary" />
+              <span className="text-sm font-medium text-primary">Smart Farming Revolution</span>
+            </div>
+            
+            <h1 className="text-5xl md:text-7xl font-bold text-foreground max-w-4xl mx-auto leading-tight">
+              Welcome to{" "}
+              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                Agro-VON
+              </span>
+            </h1>
+            
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto">
+              Your one-stop digital farming assistant combining hardware & software for smart agricultural decisions
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+              <Link to="/dashboard">
+                <Button size="lg" className="text-lg px-8 py-6">
+                  Get Started
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Button>
+              </Link>
+              <Link to="/agro-bot">
+                <Button size="lg" variant="outline" className="text-lg px-8 py-6">
+                  Talk to Agro-Bot
+                </Button>
+              </Link>
+            </div>
+          </div>
+
+          {/* Stats */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
+            <Card className="p-6 text-center bg-gradient-to-br from-primary/10 to-primary/5">
+              <TrendingUp className="w-12 h-12 text-primary mx-auto mb-3" />
+              <h3 className="text-3xl font-bold text-foreground mb-2">40%</h3>
+              <p className="text-muted-foreground">Increase in Crop Yield</p>
+            </Card>
+            <Card className="p-6 text-center bg-gradient-to-br from-secondary/10 to-secondary/5">
+              <Shield className="w-12 h-12 text-secondary mx-auto mb-3" />
+              <h3 className="text-3xl font-bold text-foreground mb-2">60%</h3>
+              <p className="text-muted-foreground">Water Savings</p>
+            </Card>
+            <Card className="p-6 text-center bg-gradient-to-br from-accent/10 to-accent/5">
+              <Sprout className="w-12 h-12 text-accent mx-auto mb-3" />
+              <h3 className="text-3xl font-bold text-foreground mb-2">99%</h3>
+              <p className="text-muted-foreground">Disease Detection Accuracy</p>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="px-4 py-16 md:py-24 bg-muted/30">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+              Everything You Need
+            </h2>
+            <p className="text-xl text-muted-foreground">
+              Comprehensive farming tools in one platform
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {features.map((feature, index) => {
+              const Icon = feature.icon;
+              return (
+                <Link key={index} to={feature.link}>
+                  <Card className="p-6 h-full hover:shadow-xl transition-all cursor-pointer group">
+                    <div className="flex flex-col h-full">
+                      <div className="p-3 bg-primary/10 rounded-full w-fit mb-4 group-hover:bg-primary group-hover:scale-110 transition-all">
+                        <Icon className="w-8 h-8 text-primary group-hover:text-primary-foreground" />
+                      </div>
+                      <h3 className="text-xl font-bold text-foreground mb-2">
+                        {feature.title}
+                      </h3>
+                      <p className="text-muted-foreground flex-1">
+                        {feature.description}
+                      </p>
+                      <div className="mt-4 flex items-center text-primary font-medium group-hover:gap-2 transition-all">
+                        Learn more
+                        <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                      </div>
+                    </div>
+                  </Card>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="px-4 py-16 md:py-24">
+        <div className="max-w-4xl mx-auto text-center">
+          <Card className="p-8 md:p-12 bg-gradient-to-br from-primary/10 via-accent/10 to-secondary/10">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Ready to Transform Your Farming?
+            </h2>
+            <p className="text-lg text-muted-foreground mb-8">
+              Join thousands of farmers using Agro-VON for smarter, more profitable farming
+            </p>
+            <Link to="/dashboard">
+              <Button size="lg" className="text-lg px-8 py-6">
+                Start Your Journey
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+            </Link>
+          </Card>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Index;
